@@ -515,12 +515,17 @@ function LiveViewer2() {
   // Function to handle play/pause button click
   const handlePlay = async() => {
     console.log('Check src:', audioElementRef.current.src);
+    const transcriptText = transcripts?.results?.[0]?.alternatives?.[0]?.transcript;
+
+    if (!transcriptText?.trim()) {
+      audioElementRef.current.srcObject = null; // Unbind
+    }
 
     if (isPlay === false) {
       setIsPlay(true)
       audioElementRef.current.play();
       // Call the translation function when play is clicked
-      await callTranslateTextSpeech();
+      //await callTranslateTextSpeech();
     } else {
       setIsPlay(false);
       audioElementRef.current.pause();
