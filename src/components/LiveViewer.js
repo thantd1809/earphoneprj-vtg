@@ -73,6 +73,7 @@ function LiveViewer() {
       await meetingSession.audioVideo.bindAudioElement(audioElement);
     } else {
       console.error('Audio element not found');
+      alert('Audio element not found');
     }
 
     console.log('Listeners - initializeMeetingSession--> Start');
